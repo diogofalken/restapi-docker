@@ -1,0 +1,80 @@
+
+Test started at 17/07/2019  16:56:55
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status FAIL
+Test ended at 17/07/2019  16:56:56
+
+Test started at 17/07/2019  16:57:34
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status FAIL
+Test ended at 17/07/2019  16:57:34
+
+Test started at 17/07/2019  16:58:09
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status PASS
+Test ended at 17/07/2019  16:58:09
+
+Test started at 17/07/2019  16:58:18
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status FAIL
+Test ended at 17/07/2019  16:58:18
+
+Test started at 17/07/2019  16:58:27
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status PASS
+Test ended at 17/07/2019  16:58:27
+
+Test started at 17/07/2019  16:58:45
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status PASS
+Test ended at 17/07/2019  16:58:45
+
+Test started at 17/07/2019  16:58:52
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status FAIL
+Test ended at 17/07/2019  16:58:52
+
+Test started at 17/07/2019  16:59:01
+	 Currently testing TC_001_GET_ALL_GREETING and it got the status PASS
+	 Currently testing TC_002_GET_GREETING and it got the status PASS
+	 Currently testing TC_003_POST_NEW_GREETING and it got the status PASS
+	 Currently testing TC_005_DELETE_GREETING and it got the status PASS
+	 Currently testing TC_006_INVALID_ROUTE and it got the status PASS
+	 Currently testing TC_007_POST_INVALID_MESSAGE and it got the status PASS
+	 Currently testing TC_008_PUT_INVALID_MESSAGE and it got the status PASS
+Test ended at 17/07/2019  16:59:01

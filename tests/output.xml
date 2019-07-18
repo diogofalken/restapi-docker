@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20190717 16:59:00.921" generator="Robot 3.1.2 (Python 2.7.15+ on linux2)">
+<suite source="/home/diogo/Documents/docker/restapi-java-docker/tests/TC_001_REST_API.robot" id="s1" name="TC 001 REST API">
+<kw type="setup" name="Initiate Session">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.100" level="INFO">Creating Session using : alias=api, url=http://localhost:5000/, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20190717 16:59:01.100" starttime="20190717 16:59:01.100"></status>
+</kw>
+<kw name="Start Log" library="log">
+<status status="PASS" endtime="20190717 16:59:01.101" starttime="20190717 16:59:01.100"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.101" starttime="20190717 16:59:01.099"></status>
+</kw>
+<test id="s1-t1" name="TC_001_GET_ALL_GREETING">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.107" level="INFO">Get Request using : alias=api, uri=greeting, headers=None json=None</msg>
+<msg timestamp="20190717 16:59:01.107" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.107" starttime="20190717 16:59:01.102"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.108" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.108" starttime="20190717 16:59:01.107"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.108" starttime="20190717 16:59:01.108"></status>
+</kw>
+<doc>Testing the endpoint GET /greeting that returns all greetings inside the service</doc>
+<tags>
+<tag>GET</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.108" critical="yes" starttime="20190717 16:59:01.101"></status>
+</test>
+<test id="s1-t2" name="TC_002_GET_GREETING">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${ID}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.114" level="INFO">Get Request using : alias=api, uri=greeting/1, headers=None json=None</msg>
+<msg timestamp="20190717 16:59:01.114" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.114" starttime="20190717 16:59:01.110"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.115" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.115" starttime="20190717 16:59:01.114"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.115" starttime="20190717 16:59:01.115"></status>
+</kw>
+<doc>Testing the endpoint GET /greeting/:id that returns the greeting with id=:id</doc>
+<tags>
+<tag>GET</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.116" critical="yes" starttime="20190717 16:59:01.109"></status>
+</test>
+<test id="s1-t3" name="TC_003_POST_NEW_GREETING">
+<kw name="Form data">
+<doc>Creates a dictionary with the ${info} passed as argument</doc>
+<arguments>
+<arg>teste</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>message=${info}</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.119" level="INFO">&amp;{data} = { message=teste }</msg>
+<status status="PASS" endtime="20190717 16:59:01.119" starttime="20190717 16:59:01.118"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.119" level="INFO">&amp;{data} = { message=teste }</msg>
+<status status="PASS" endtime="20190717 16:59:01.119" starttime="20190717 16:59:01.118"></status>
+</kw>
+<kw name="Form headers">
+<doc>Creates a dictionary with the headers needed for the requests</doc>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.121" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.121" starttime="20190717 16:59:01.120"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.121" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.122" starttime="20190717 16:59:01.119"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.126" level="INFO">Post Request using : alias=api, uri=greeting, data=message=teste, headers={u'Content-Type': u'application/x-www-form-urlencoded'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20190717 16:59:01.126" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.126" starttime="20190717 16:59:01.122"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.126" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.127" starttime="20190717 16:59:01.126"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${response_data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.127" level="INFO">To JSON using : content={"message":"teste"} </msg>
+<msg timestamp="20190717 16:59:01.127" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20190717 16:59:01.127" level="INFO">${response_data} = {u'message': u'teste'}</msg>
+<status status="PASS" endtime="20190717 16:59:01.127" starttime="20190717 16:59:01.127"></status>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>teste</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.128" starttime="20190717 16:59:01.127"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.128" starttime="20190717 16:59:01.128"></status>
+</kw>
+<doc>Testing the endpoint POST /greeting that adds a new message to the service</doc>
+<tags>
+<tag>POST</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.128" critical="yes" starttime="20190717 16:59:01.116"></status>
+</test>
+<test id="s1-t4" name="TC_004_PUT_GREETING">
+<kw type="setup" name="Create greeting">
+<doc>Used to create a fake entry in the service in order to test the DELETE and PUT endpoints</doc>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.137" level="INFO">Post Request using : alias=api, uri=greeting/1000, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<status status="PASS" endtime="20190717 16:59:01.137" starttime="20190717 16:59:01.131"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.137" starttime="20190717 16:59:01.130"></status>
+</kw>
+<kw name="Form data">
+<doc>Creates a dictionary with the ${info} passed as argument</doc>
+<arguments>
+<arg>newMessage</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>message=${info}</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.139" level="INFO">&amp;{data} = { message=newMessage }</msg>
+<status status="PASS" endtime="20190717 16:59:01.139" starttime="20190717 16:59:01.139"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.140" level="INFO">&amp;{data} = { message=newMessage }</msg>
+<status status="PASS" endtime="20190717 16:59:01.140" starttime="20190717 16:59:01.138"></status>
+</kw>
+<kw name="Form headers">
+<doc>Creates a dictionary with the headers needed for the requests</doc>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.141" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.141" starttime="20190717 16:59:01.140"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.141" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.141" starttime="20190717 16:59:01.140"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.157" level="INFO">Put Request using : alias=api, uri=greeting/1000, data=message=newMessage,                     headers={u'Content-Type': u'application/x-www-form-urlencoded'}, allow_redirects=True </msg>
+<msg timestamp="20190717 16:59:01.157" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.157" starttime="20190717 16:59:01.141"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.158" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.158" starttime="20190717 16:59:01.157"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${response_data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.159" level="INFO">To JSON using : content={"1000":"newMessage"} </msg>
+<msg timestamp="20190717 16:59:01.159" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20190717 16:59:01.159" level="INFO">${response_data} = {u'1000': u'newMessage'}</msg>
+<status status="PASS" endtime="20190717 16:59:01.159" starttime="20190717 16:59:01.159"></status>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>newMessage</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.160" starttime="20190717 16:59:01.159"></status>
+</kw>
+<kw type="teardown" name="Delete greeting">
+<doc>Used to delete the fake entry in the service</doc>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.174" level="INFO">Delete Request using : alias=api, uri=greeting/1000, data=None,                     headers=None, allow_redirects=True </msg>
+<status status="PASS" endtime="20190717 16:59:01.174" starttime="20190717 16:59:01.160"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.174" starttime="20190717 16:59:01.160"></status>
+</kw>
+<doc>Testing the endpoint PUT /greeting/:id that changes the message (sent as Form data) from the key with id=:id</doc>
+<tags>
+<tag>PUT</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.174" critical="yes" starttime="20190717 16:59:01.129"></status>
+</test>
+<test id="s1-t5" name="TC_005_DELETE_GREETING">
+<kw type="setup" name="Create greeting">
+<doc>Used to create a fake entry in the service in order to test the DELETE and PUT endpoints</doc>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.183" level="INFO">Post Request using : alias=api, uri=greeting/1000, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<status status="PASS" endtime="20190717 16:59:01.183" starttime="20190717 16:59:01.176"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.184" starttime="20190717 16:59:01.175"></status>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.194" level="INFO">Delete Request using : alias=api, uri=greeting/1000, data=None,                     headers=None, allow_redirects=True </msg>
+<msg timestamp="20190717 16:59:01.194" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.194" starttime="20190717 16:59:01.185"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.197" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.197" starttime="20190717 16:59:01.196"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.199" starttime="20190717 16:59:01.198"></status>
+</kw>
+<doc>Testing the endpoint DELETE /greeting/:id that deletes the message the key :id</doc>
+<tags>
+<tag>DELETE</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.199" critical="yes" starttime="20190717 16:59:01.175"></status>
+</test>
+<test id="s1-t6" name="TC_006_INVALID_ROUTE">
+<kw type="setup" name="Create greeting">
+<doc>Used to create a fake entry in the service in order to test the DELETE and PUT endpoints</doc>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.210" level="INFO">Post Request using : alias=api, uri=greeting/1000, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<status status="PASS" endtime="20190717 16:59:01.214" starttime="20190717 16:59:01.203"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.214" starttime="20190717 16:59:01.203"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>xpto</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.227" level="INFO">Get Request using : alias=api, uri=xpto, headers=None json=None</msg>
+<msg timestamp="20190717 16:59:01.228" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.228" starttime="20190717 16:59:01.215"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.229" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.230" starttime="20190717 16:59:01.228"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${response_data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.230" level="INFO">To JSON using : content={"message":"Invalid endpoint"} </msg>
+<msg timestamp="20190717 16:59:01.230" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20190717 16:59:01.230" level="INFO">${response_data} = {u'message': u'Invalid endpoint'}</msg>
+<status status="PASS" endtime="20190717 16:59:01.230" starttime="20190717 16:59:01.230"></status>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>Invalid endpoint</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.231" starttime="20190717 16:59:01.231"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.234" starttime="20190717 16:59:01.231"></status>
+</kw>
+<doc>Testing the a invalid endpoint</doc>
+<tags>
+<tag>GET</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.235" critical="yes" starttime="20190717 16:59:01.201"></status>
+</test>
+<test id="s1-t7" name="TC_007_POST_INVALID_MESSAGE">
+<kw type="setup" name="Create greeting">
+<doc>Used to create a fake entry in the service in order to test the DELETE and PUT endpoints</doc>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.248" level="INFO">Post Request using : alias=api, uri=greeting/1000, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<status status="PASS" endtime="20190717 16:59:01.249" starttime="20190717 16:59:01.245"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.249" starttime="20190717 16:59:01.244"></status>
+</kw>
+<kw name="Form data">
+<doc>Creates a dictionary with the ${info} passed as argument</doc>
+<arguments>
+<arg>Olá</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>message=${info}</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.252" level="INFO">&amp;{data} = { message=Olá }</msg>
+<status status="PASS" endtime="20190717 16:59:01.252" starttime="20190717 16:59:01.251"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.252" level="INFO">&amp;{data} = { message=Olá }</msg>
+<status status="PASS" endtime="20190717 16:59:01.253" starttime="20190717 16:59:01.250"></status>
+</kw>
+<kw name="Form headers">
+<doc>Creates a dictionary with the headers needed for the requests</doc>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.265" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.265" starttime="20190717 16:59:01.264"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.265" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.265" starttime="20190717 16:59:01.264"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.273" level="INFO">Post Request using : alias=api, uri=greeting, data=message=Ol%C3%A1, headers={u'Content-Type': u'application/x-www-form-urlencoded'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20190717 16:59:01.273" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.273" starttime="20190717 16:59:01.266"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.274" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.274" starttime="20190717 16:59:01.273"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${response_data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.274" level="INFO">To JSON using : content={"message":"Message contains invalid chars"} </msg>
+<msg timestamp="20190717 16:59:01.274" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20190717 16:59:01.275" level="INFO">${response_data} = {u'message': u'Message contains invalid chars'}</msg>
+<status status="PASS" endtime="20190717 16:59:01.275" starttime="20190717 16:59:01.274"></status>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>Message contains invalid chars</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.275" starttime="20190717 16:59:01.275"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.276" starttime="20190717 16:59:01.275"></status>
+</kw>
+<doc>Testing the a invalid message with POST should return a 400 status code</doc>
+<tags>
+<tag>POST</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.277" critical="yes" starttime="20190717 16:59:01.243"></status>
+</test>
+<test id="s1-t8" name="TC_008_PUT_INVALID_MESSAGE">
+<kw type="setup" name="Create greeting">
+<doc>Used to create a fake entry in the service in order to test the DELETE and PUT endpoints</doc>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.287" level="INFO">Post Request using : alias=api, uri=greeting/1000, data=&lt;empty&gt;, headers=None, files=None, allow_redirects=True </msg>
+<status status="PASS" endtime="20190717 16:59:01.287" starttime="20190717 16:59:01.278"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.287" starttime="20190717 16:59:01.278"></status>
+</kw>
+<kw name="Form data">
+<doc>Creates a dictionary with the ${info} passed as argument</doc>
+<arguments>
+<arg>olá</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>message=${info}</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.296" level="INFO">&amp;{data} = { message=olá }</msg>
+<status status="PASS" endtime="20190717 16:59:01.296" starttime="20190717 16:59:01.295"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.296" level="INFO">&amp;{data} = { message=olá }</msg>
+<status status="PASS" endtime="20190717 16:59:01.296" starttime="20190717 16:59:01.288"></status>
+</kw>
+<kw name="Form headers">
+<doc>Creates a dictionary with the headers needed for the requests</doc>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<assign>
+<var>&amp;{headers}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.298" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.298" starttime="20190717 16:59:01.296"></status>
+</kw>
+<msg timestamp="20190717 16:59:01.298" level="INFO">&amp;{headers} = { Content-Type=application/x-www-form-urlencoded }</msg>
+<status status="PASS" endtime="20190717 16:59:01.298" starttime="20190717 16:59:01.296"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>api</arg>
+<arg>greeting/${testID}</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.309" level="INFO">Put Request using : alias=api, uri=greeting/1000, data=message=ol%C3%A1,                     headers={u'Content-Type': u'application/x-www-form-urlencoded'}, allow_redirects=True </msg>
+<msg timestamp="20190717 16:59:01.309" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.309" starttime="20190717 16:59:01.299"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+</arguments>
+<msg timestamp="20190717 16:59:01.310" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20190717 16:59:01.310" starttime="20190717 16:59:01.309"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${response_data}</var>
+</assign>
+<msg timestamp="20190717 16:59:01.310" level="INFO">To JSON using : content={"message":"Message contains invalid chars"} </msg>
+<msg timestamp="20190717 16:59:01.310" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20190717 16:59:01.310" level="INFO">${response_data} = {u'message': u'Message contains invalid chars'}</msg>
+<status status="PASS" endtime="20190717 16:59:01.310" starttime="20190717 16:59:01.310"></status>
+</kw>
+<kw name="Dictionary Should Contain Value" library="Collections">
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>Message contains invalid chars</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.311" starttime="20190717 16:59:01.311"></status>
+</kw>
+<kw type="teardown" name="Log Test Case" library="log">
+<arguments>
+<arg>${TEST NAME}</arg>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<status status="PASS" endtime="20190717 16:59:01.312" starttime="20190717 16:59:01.311"></status>
+</kw>
+<doc>Testing the a invalid message with PUT should return a 400 status code</doc>
+<tags>
+<tag>PUT</tag>
+</tags>
+<status status="PASS" endtime="20190717 16:59:01.313" critical="yes" starttime="20190717 16:59:01.277"></status>
+</test>
+<kw type="teardown" name="Stop Log" library="log">
+<status status="PASS" endtime="20190717 16:59:01.314" starttime="20190717 16:59:01.314"></status>
+</kw>
+<status status="PASS" endtime="20190717 16:59:01.314" starttime="20190717 16:59:00.923"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="8">Critical Tests</stat>
+<stat fail="0" pass="8">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">DELETE</stat>
+<stat fail="0" pass="3">GET</stat>
+<stat fail="0" pass="2">POST</stat>
+<stat fail="0" pass="2">PUT</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="TC 001 REST API" pass="8">TC 001 REST API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
