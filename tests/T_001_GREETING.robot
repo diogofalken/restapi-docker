@@ -78,7 +78,7 @@ TC_004_PUT_GREETING
 
 TC_005_DELETE_GREETING
     [Documentation]  Testing the endpoint DELETE /greeting/:id that deletes the message the key :id
-    [Tags]    DELETE
+    [Tags]    DELETE${info}
     [Setup]  Create greeting
 
     ${response}=  Delete Request  api  greeting/${testID}
