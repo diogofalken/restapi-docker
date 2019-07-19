@@ -4,8 +4,6 @@ The idea behind this project was write a API with java using Maven and make it r
 
 ## Getting Started
 
----
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
@@ -49,8 +47,6 @@ _Note 1: MySql will listen on port 3306._
 _Note 2: restapi will listen on port 5000._
 
 ## API
-
----
 
 ### Status Codes
 
@@ -269,8 +265,6 @@ restapi-docker returns the following status codes in its API:
 
 ## Tests
 
----
-
 For tests I use RobotFramework, and can be accessed in /tests directory.
 
 ```bash
@@ -334,16 +328,12 @@ Report:  /home/diogo/Documents/docker/restapi-java-docker/tests/report.html
 
 ## Built With
 
----
-
 - [Spark](https://spark.apache.org/) - Used for api
 - [Maven](https://maven.apache.org/) - Dependency Management
 - [RobotFramework](https://robotframework.org/) - Framework used for tests
 - [MySQL](https://www.mysql.com/) - Database management system
 
 ## License
-
----
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
