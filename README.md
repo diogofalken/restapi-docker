@@ -265,7 +265,11 @@ restapi-docker returns the following status codes in its API:
 
 ## Tests
 
-For tests I use RobotFramework, and can be accessed in /tests directory.
+For tests I use RobotFramework, and can be accessed in /tests directory and can be runned with:
+```bash
+$ robot T_001_GREETING
+$ robot T_002_USER
+```
 
 ```bash
 ==============================================================================
