@@ -1,6 +1,6 @@
 # restapi-docker
 
-The idea behind this project was write a API with java using Maven and make it run inside a docker container and have a another container with mysql image.
+The idea behind this project was to write a API with java using Maven and make it run inside a docker container and with the help of JDBC make connection a mysql container.
 
 ## Getting Started
 
@@ -266,6 +266,7 @@ restapi-docker returns the following status codes in its API:
 ## Tests
 
 For tests I use RobotFramework, and can be accessed in /tests directory and can be runned with:
+
 ```bash
 $ robot T_001_GREETING
 $ robot T_002_USER
