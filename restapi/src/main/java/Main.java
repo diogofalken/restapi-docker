@@ -17,7 +17,6 @@ public class Main {
 
     public static void main(String[] args) {
         greetings.put(1, "Test Greeting");
-        Database db = new Database();
 
         // Greeting endpoint
         path("/greeting", () -> {
@@ -86,12 +85,12 @@ public class Main {
                         String birthDate = cur.get("birthDate").toString();
                         String city = cur.get("city").toString();
 
-                        if (!testUserParams(name, birthDate, city)) {
+                        if (!testBirthDate(birthDate)) {
                             return error(400, "Params don't follow the rules", res);
                         }
 
                         User user = new User(name, formatDate(birthDate), city);
-                        db.insertUser(user, 0);
+                        Database.insertUser(user, 0);
                     }
                     return new JSONObject().put("message", "Were added " + array.length() + " users.");
                 } catch (Exception e) {
@@ -101,18 +100,18 @@ public class Main {
 
             post("/:id", (req, res) -> {
                 User user = new User("Teste", "1999-01-01", "Marrocos");
-                db.insertUser(user, Integer.parseInt(req.params(":id")));
+                Database.insertUser(user, Integer.parseInt(req.params(":id")));
                 return new JSONObject().put("message", "Fake user inserted with success");
             });
 
             get("", (req, res) -> {
                 res.type("application/json");
                 res.status(200);
-                return db.getUsers();
+                return Database.getUsers();
             });
 
             get("/:id", (req, res) -> {
-                JSONArray result = db.getUser(Integer.parseInt(req.params(":id")));
+                JSONArray result = Database.getUser(Integer.parseInt(req.params(":id")));
                 res.type("application/json");
                 if (result == null) {
                     return error(400, "ID doesn't exist on DB.", res);
@@ -125,7 +124,7 @@ public class Main {
             delete("/:id", (req, res) -> {
                 res.type("application/json");
                 res.status(200);
-                if (!db.deleteUser(Integer.parseInt(req.params(":id")))) {
+                if (!Database.deleteUser(Integer.parseInt(req.params(":id")))) {
                     return error(400, "ID doesn't exist on DB.", res);
                 }
                 return new JSONObject().put("message", "User with id " + req.params(":id") + " deleted with success from DB.");
@@ -152,7 +151,7 @@ public class Main {
                     String birthDate = cur.get("birthDate").toString();
                     String city = cur.get("city").toString();
 
-                    if (!testUserParams(name, birthDate, city)) {
+                    if (!testBirthDate(birthDate)) {
                         return error(400, "Params don't follow the rules", res);
                     }
                     User user = new User(name, formatDate(birthDate), city);
@@ -249,7 +248,7 @@ public class Main {
         return jsonObject;
     }
 
-    private static boolean testUserParams(String name, String date, String city) {
+    private static boolean testBirthDate(String date) {
         if ((date.charAt(4) == '/' || date.charAt(7) == '/')) {
             return false;
         }
