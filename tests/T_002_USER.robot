@@ -178,7 +178,6 @@ TC_010_PUT_USER
 TC_011_PUT_USER_WRONG_ID
     [Documentation]  Testing the endpoint PUT /user/:id with a wrong ID
     [Tags]    PUT
-    [Setup]  Create user
 
     @{users}    Create List
     &{headers}=  Create Dictionary  Content-Type=application/json
