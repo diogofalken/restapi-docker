@@ -86,7 +86,7 @@ public class Main {
                         String birthDate = cur.get("birthDate").toString();
                         String city = cur.get("city").toString();
 
-                        if (testUserParams(name, birthDate, city) == false) {
+                        if (!testUserParams(name, birthDate, city)) {
                             return error(400, "Params don't follow the rules", res);
                         }
 
@@ -94,13 +94,12 @@ public class Main {
                         db.insertUser(user, 0);
                     }
                     return new JSONObject().put("message", "Were added " + array.length() + " users.");
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     return error(400, "Wrong JSON format", res);
                 }
             });
 
-            post("/:id", (req,res) -> {
+            post("/:id", (req, res) -> {
                 User user = new User("Teste", "1999-01-01", "Marrocos");
                 db.insertUser(user, Integer.parseInt(req.params(":id")));
                 return new JSONObject().put("message", "Fake user inserted with success");
@@ -112,10 +111,10 @@ public class Main {
                 return db.getUsers();
             });
 
-            get("/:id", (req,res) -> {
+            get("/:id", (req, res) -> {
                 JSONArray result = db.getUser(Integer.parseInt(req.params(":id")));
                 res.type("application/json");
-                if(result == null) {
+                if (result == null) {
                     return error(400, "ID doesn't exist on DB.", res);
                 }
                 res.status(200);
@@ -126,10 +125,45 @@ public class Main {
             delete("/:id", (req, res) -> {
                 res.type("application/json");
                 res.status(200);
-                if(!db.deleteUser(Integer.parseInt(req.params(":id")))) {
+                if (!db.deleteUser(Integer.parseInt(req.params(":id")))) {
                     return error(400, "ID doesn't exist on DB.", res);
                 }
                 return new JSONObject().put("message", "User with id " + req.params(":id") + " deleted with success from DB.");
+            });
+
+            put("/:id", (req, res) -> {
+                res.type("application/json");
+                res.status(200);
+
+                if (!req.contentType().equals("application/json")) {
+                    return error(400, "Only accepts content of application/json type", res);
+                }
+                try {
+                    JSONArray array = new JSONArray(req.body());
+
+                    // Verify if the JSONArray is empty
+                    if (array.length() == 0) {
+                        return error(400, "User array is empty", res);
+                    }
+
+                    // Add Users from JSONArray to mysql DB
+                    JSONObject cur = array.getJSONObject(0);
+                    String name = cur.get("name").toString();
+                    String birthDate = cur.get("birthDate").toString();
+                    String city = cur.get("city").toString();
+
+                    if (!testUserParams(name, birthDate, city)) {
+                        return error(400, "Params don't follow the rules", res);
+                    }
+                    User user = new User(name, formatDate(birthDate), city);
+
+                    if (!Database.putUser(Integer.parseInt(req.params(":id")), user)){
+                        return error(400, "ID doesn't exist on DB.", res);
+                    }
+                } catch (Exception e) {
+                    return error(400, "Wrong JSON format", res);
+                }
+                return new JSONObject().put("message", "User with id " + req.params(":id") + " was updated with success.");
             });
         });
 
