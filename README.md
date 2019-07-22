@@ -244,6 +244,37 @@ restapi-docker returns the following status codes in its API:
 }
 ```
 
+### **Update user**
+
+**Endpoint path:** `PUT /user/:id`  
+**Body:**
+
+```json
+[
+  {
+    "name": "NewName",
+    "birthDate": "NewBirthDate",
+    "city": "NewCity"
+  }
+]
+```
+
+**Returns (success):**
+
+```json
+{
+  "message": "User with id x was updated with success."
+}
+```
+
+**Returns (error):**
+
+```json
+{
+  "message": "ID doesn't exist on DB."
+}
+```
+
 ### **Delete user**
 
 **Endpoint path:** `DELETE /user/:id`  
